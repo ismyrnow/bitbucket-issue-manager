@@ -1,0 +1,8 @@
+bitbucket:
+  oauth:
+    requestTokenURL: https://bitbucket.org/api/1.0/oauth/request_token
+    accessTokenURL: https://bitbucket.org/api/1.0/oauth/access_token
+    userAuthorizationURL: https://bitbucket.org/api/1.0/oauth/authenticate
+    # consumerKey: ...
+    # consumerSecret: ...
+    callbackURL: http://localhost:3000/auth/provider/callback
