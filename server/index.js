@@ -16,6 +16,7 @@ var app = express();
 var hbs = exphbs.create({
   extname: '.hbs',
   //helpers: helpers,
+  defaultLayout: 'main',
   layoutsDir: path.join(__dirname, 'views', 'layouts'),
   partialsDir: path.join(__dirname, 'views', 'partials')
 });
@@ -43,7 +44,7 @@ app.use(passport.session());
 
 autoLoadRouters(app, './server/routes');
 app.get('/', loginRedirect, function(req, res) {
-  res.send('authorized :)');
+  res.render('index');
 });
 
 
