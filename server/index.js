@@ -5,7 +5,8 @@ var express = require('express');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var passport = require('passport');
-var session = require('express-session');
+var session = require('cookie-session');
+
 var autoLoadRouters = require('./modules/auto-load-routers');
 var loginRedirect = require('./middleware/login-redirect');
 require('./passport');
@@ -31,7 +32,8 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
-app.use(session({ resave: false, saveUninitialized: false, secret: 'foo'}));
+app.set('trust proxy', 1);
+app.use(session({ secret: 'foo' }));
 app.use(passport.initialize());
 app.use(passport.session());
 
