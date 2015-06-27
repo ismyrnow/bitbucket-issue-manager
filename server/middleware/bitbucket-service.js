@@ -5,7 +5,8 @@ var Bitbucket = require('../services/bitbucket');
 
 var log = bunyan.createLogger({ name: 'bitbucket-service' });
 
-module.exports = function loginRedirect(req, res, next) {
+module.exports = function bitbucketService(req, res, next) {
+
   if (!req.user) {
     log.error('no user object found! unable to initialize service.');
     return res.setStatus(401).send('Unauthorized');
@@ -20,6 +21,8 @@ module.exports = function loginRedirect(req, res, next) {
 
   var bitbucket = new Bitbucket(oauth);
   req.user.bitbucket = bitbucket;
+
+  log.info('service created and attached to req.user');
 
   next();
 };
