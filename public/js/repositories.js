@@ -25,7 +25,6 @@ var RepositoryPanel = React.createClass({
   },
   componentDidMount: function() {
     this.loadRepositoriesFromServer();
-    setInterval(this.loadRepositoriesFromServer, this.props.pollInterval);
   },
   render: function() {
     return (
@@ -53,13 +52,13 @@ var Repository = React.createClass({
   render: function() {
     return (
       <li>
-        {this.props.account} / {this.props.name}
+        {this.props.name}
       </li>
     );
   }
 });
 
 React.render(
-  <RepositoryPanel url="/api/repositories" pollInterval={10000} />,
+  <RepositoryPanel url="/api/repositories" />,
   document.getElementById('panel-repositories')
 );
