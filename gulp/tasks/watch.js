@@ -1,13 +1,14 @@
 'use strict';
 var gulp = require('gulp');
-var server = require('gulp-express');
+var gls = require('gulp-live-server');
 
 gulp.task('watch', function () {
   // Start the server immediately.
-  server.run(['index.js']);
+  var server = gls.new('index.js');
+  server.start();
 
   // Restart the server on a change to server-side code.
-  gulp.watch(['server/**/*'], function () {
-    server.run(['index.js']);
+  gulp.watch(['server/**/*'], function (file) {
+    server.notify.apply(server, [file]);
   });
 });

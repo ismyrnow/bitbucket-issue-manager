@@ -8,7 +8,7 @@
     "start": "node server | bunyan -o short",
     "test": "eslint index.js server"
   },
-  "author": "",
+  "author": "Ishmael Smyrnow",
   "license": "MIT",
   "private": true,
   "dependencies": {
@@ -29,6 +29,6 @@
   "devDependencies": {
     "eslint": "^0.23.0",
     "gulp": "^3.9.0",
-    "gulp-express": "^0.3.5"
+    "gulp-live-server": "0.0.29"
   }
 }
